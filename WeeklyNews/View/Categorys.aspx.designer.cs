@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WeeklyNews {
+namespace WeeklyNews.View {
     
     
-    public partial class _Default {
+    public partial class Categorys {
         
         /// <summary>
-        /// HyperLink1 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
     }
 }

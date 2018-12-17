@@ -5,11 +5,10 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Linq;
 using System.Web;
-using WeeklyNews.Interfaces;
 
 namespace WeeklyNews.DAL
 {
-    public class WeeklyNewsContext :DbContext, IUnitofWork
+    public class WeeklyNewsContext :DbContext
     {
         public WeeklyNewsContext() : base("WeeklyNewsDB")
         { }

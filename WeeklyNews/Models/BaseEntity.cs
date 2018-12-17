@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WeeklyNews.Interfaces;
 
 namespace WeeklyNews.Models
 {
-    public abstract class BaseEntity : IEntity
+    public abstract class BaseEntity 
     {
         public long Id { get; set; }
         public DateTime CreatedDate { get; set; }
