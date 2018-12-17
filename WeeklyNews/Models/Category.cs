@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using WeeklyNews.Interfaces;
 
 namespace WeeklyNews.Models
 {
-    public class Category
+    public class Category : BaseEntity
     {
-        [Key]
-        public long Id { get; set; }
         public string Title { get; set; }
     }
 }

@@ -185,6 +185,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Business\CategoryBusisness.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -192,12 +193,8 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DAL\CategoryRepository.cs" />
-    <Compile Include="DAL\IRepository.cs" />
-    <Compile Include="DAL\IUnitOfWork.cs" />
-    <Compile Include="DAL\NewsRepository.cs" />
-    <Compile Include="DAL\Repository.cs" />
-    <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="DAL\EntityFrameworkReadOnlyRepository.cs" />
+    <Compile Include="DAL\EntityFrameworkRepository.cs" />
     <Compile Include="DAL\WeeklyNewsContext.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -209,6 +206,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Interfaces\IReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
