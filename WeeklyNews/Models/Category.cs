@@ -10,5 +10,6 @@ namespace WeeklyNews.Models
     public class Category : BaseEntity
     {
         public string Title { get; set; }
+        public ICollection<News> News { get; set; }
     }
 }

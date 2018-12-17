@@ -6,7 +6,7 @@ using WeeklyNews.Interfaces;
 
 namespace WeeklyNews.Models
 {
-    public class BaseEntity : IEntity
+    public abstract class BaseEntity : IEntity
     {
         public long Id { get; set; }
         public DateTime CreatedDate { get; set; }

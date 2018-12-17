@@ -5,13 +5,19 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Linq;
 using System.Web;
+using WeeklyNews.Interfaces;
 
 namespace WeeklyNews.DAL
 {
-    public class WeeklyNewsContext :DbContext
+    public class WeeklyNewsContext :DbContext, IUnitofWork
     {
         public WeeklyNewsContext() : base("WeeklyNewsDB")
         { }
+
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
+        {
+            return base.Set<TEntity>();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
