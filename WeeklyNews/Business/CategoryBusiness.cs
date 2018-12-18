@@ -20,6 +20,11 @@ namespace WeeklyNews.Business
         {
             return categoryRepository.Table;
         }
+
+        public Category GetByID(long Id)
+        {
+            return categoryRepository.GetById(Id);
+        }
         public void AddCategory(string title)
         {
             var category = new Category();
@@ -27,6 +32,20 @@ namespace WeeklyNews.Business
             category.CreatedDate = DateTime.Now;
             category.ModifiedDate = DateTime.Now;
             categoryRepository.Insert(category);
+        }
+        public void UpdateCategory(long categoryID,string title)
+        {
+            var category = new Category();
+            category = categoryRepository.GetById(categoryID);
+            category.Title = title;            
+            category.ModifiedDate = DateTime.Now;
+            categoryRepository.Update(category);
+        }
+        public void DeleteCategory(long categoryID)
+        {
+            var category = new Category();
+            category = categoryRepository.GetById(categoryID);
+            categoryRepository.Delete(category);            
         }
     }
 }

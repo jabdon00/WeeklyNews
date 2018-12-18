@@ -12,8 +12,13 @@
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/View/Category/NewCategory.aspx">Add Category</asp:HyperLink>
         </div>
         <div>
-            <asp:GridView ID="gvCategory" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="gvCategory" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnRowCommand="gvCategory_RowCommand">
                 <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="/View/Category/NewCategory.aspx?Id={0}" DataTextField="Id" HeaderText="ID" />
+                    <asp:BoundField DataField="Title" HeaderText="Title" />
+                    <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" ShowHeader="True" />
+                </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
