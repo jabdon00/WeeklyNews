@@ -14,7 +14,7 @@ namespace WeeklyNews.Mapping
         {
             HasKey(t => t.Id);
             Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(t => t.Title).IsRequired();
+            Property(t => t.Title).IsRequired();            
         }
     }
 }

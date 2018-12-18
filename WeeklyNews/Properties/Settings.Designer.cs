@@ -26,10 +26,11 @@ namespace WeeklyNews.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Integrated Security=True")]
-        public string connectionstring {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=WeeklyNews;Persist Security Info=True;User ID=sa;Pa" +
+            "ssword=1")]
+        public string WeeklyNews {
             get {
-                return ((string)(this["connectionstring"]));
+                return ((string)(this["WeeklyNews"]));
             }
         }
     }

@@ -10,7 +10,7 @@ namespace WeeklyNews.DAL
 {
     public class WeeklyNewsContext :DbContext
     {
-        public WeeklyNewsContext() : base("WeeklyNewsDB")
+        public WeeklyNewsContext() : base("name=WeeklyNews")
         { }
 
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
