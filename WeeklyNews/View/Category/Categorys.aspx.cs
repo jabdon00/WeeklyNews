@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WeeklyNews.Business;
 
-namespace WeeklyNews.View
+namespace WeeklyNews.View.Category
 {
     public partial class Categorys : System.Web.UI.Page
     {

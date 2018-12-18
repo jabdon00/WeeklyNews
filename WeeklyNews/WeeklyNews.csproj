@@ -194,7 +194,8 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="View\Categorys.aspx" />
+    <Content Include="View\Category\Categorys.aspx" />
+    <Content Include="View\Category\NewCategory.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -262,12 +263,19 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="View\Categorys.aspx.cs">
+    <Compile Include="View\Category\Categorys.aspx.cs">
       <DependentUpon>Categorys.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Categorys.aspx.designer.cs">
+    <Compile Include="View\Category\Categorys.aspx.designer.cs">
       <DependentUpon>Categorys.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Category\NewCategory.aspx.cs">
+      <DependentUpon>NewCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Category\NewCategory.aspx.designer.cs">
+      <DependentUpon>NewCategory.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

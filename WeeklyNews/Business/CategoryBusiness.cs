@@ -9,7 +9,7 @@ namespace WeeklyNews.Business
 {
     public class CategoryBusiness
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        private UnitOfWork unitOfWork = new UnitOfWork(new WeeklyNewsContext());
         private Repository<Category> categoryRepository;
         public CategoryBusiness()
         {
@@ -19,6 +19,14 @@ namespace WeeklyNews.Business
         public IEnumerable<Category> ListView ()
         {
             return categoryRepository.Table.ToList();
+        }
+        public void AddCategory(string title)
+        {
+            var category = new Category();
+            category.Title = title;
+            category.CreatedDate = DateTime.Now;
+            category.ModifiedDate = DateTime.Now;
+            categoryRepository.Insert(category);
         }
     }
 }
