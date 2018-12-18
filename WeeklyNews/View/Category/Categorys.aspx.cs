@@ -13,7 +13,8 @@ namespace WeeklyNews.View.Category
         protected void Page_Load(object sender, EventArgs e)
         {
             CategoryBusiness categoryBusiness = new CategoryBusiness();
-            
+            gvCategory.DataSource = categoryBusiness.ListView().ToList();
+            gvCategory.DataBind();
 
         }
     }

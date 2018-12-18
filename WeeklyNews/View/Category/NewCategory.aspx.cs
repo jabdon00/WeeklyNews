@@ -18,7 +18,8 @@ namespace WeeklyNews.View.Category
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            categoryBusiness.AddCategory(TextBox1.Text);
+            categoryBusiness.AddCategory(txtTitle.Text);
+            Response.Redirect("Categorys.aspx");
         }
     }
 }

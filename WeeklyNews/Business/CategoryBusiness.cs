@@ -16,9 +16,9 @@ namespace WeeklyNews.Business
             categoryRepository = unitOfWork.Repository<Category>();
         }
 
-        public IEnumerable<Category> ListView ()
+        public IQueryable<Category> ListView ()
         {
-            return categoryRepository.Table.ToList();
+            return categoryRepository.Table;
         }
         public void AddCategory(string title)
         {
