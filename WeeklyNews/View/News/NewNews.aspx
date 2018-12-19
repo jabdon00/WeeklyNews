@@ -29,7 +29,7 @@
         </div>
         <div>
             <asp:Label ID="Label5" runat="server" Text="Image : "></asp:Label>
-            <asp:FileUpload ID="FileUpload1" runat="server" />
+            <asp:FileUpload ID="fuImage" runat="server" />
         </div>
         <div>
             <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />

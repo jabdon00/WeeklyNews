@@ -13,28 +13,48 @@ namespace WeeklyNews.Business
     {
         private UnitOfWork unitOfWork;
         private Repository<News> newsRepositorty;
+        private Repository<Category> categoryRepository;
         public NewsBusiness(UnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
             newsRepositorty = unitOfWork.Repository<News>();
+            categoryRepository = unitOfWork.Repository<Category>();
         }
 
         public IQueryable<News> FetchAll()
         {
             return newsRepositorty.Table;
         }
-
+        public IQueryable<VwNews> FetchJoined()
+        {
+            var categories = categoryRepository.Table;
+            var news = newsRepositorty.Table;
+            return (from p in news
+                    join c in categories
+                    on p.CategoryID equals c.Id
+                    orderby p.Date
+                    select new VwNews
+                    {
+                        Id = p.Id,
+                        Title = p.Title,
+                        Date = p.Date,
+                        Description = p.Description,
+                        CategoryTitle = c.Title,
+                        Image = p.Image
+                    }
+                );
+        }
         public News GetByID(long Id)
         {
             return newsRepositorty.GetById(Id);
         }
-        public void AddNews(string title, DateTime date, string desc, byte[] image, Category category)
+        public void AddNews(string title, DateTime date, string desc, byte[] image, long categoryID)
         {
             var news = new News();
             news.Title = title;
             news.Date = date;
             news.Description = desc;
-            news.Category = category;
+            news.CategoryID = categoryID;
             news.Image = image;
             news.CreatedDate = DateTime.Now;
             news.ModifiedDate = DateTime.Now;

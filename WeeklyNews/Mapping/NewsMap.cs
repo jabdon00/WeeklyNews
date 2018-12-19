@@ -16,7 +16,8 @@ namespace WeeklyNews.Mapping
             Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(t => t.Title).IsRequired();
             Property(t => t.Description).IsRequired();
-            Property(t => t.Image).IsRequired();            
+            Property(t => t.Image);
+            Property(t => t.CategoryID).IsRequired();
         }
     }
 }

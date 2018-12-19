@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,16 +18,25 @@ namespace WeeklyNews.View.News
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ddCategory.DataValueField = "Id";
-            ddCategory.DataTextField = "Title";
-            ddCategory.DataSource = categoryBusiness.FetchAll().ToList();
-            ddCategory.DataBind();
+            if (!IsPostBack)
+            {
+                ddCategory.DataValueField = "Id";
+                ddCategory.DataTextField = "Title";
+                ddCategory.DataSource = categoryBusiness.FetchAll().ToList();
+                ddCategory.DataBind();
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            byte[] uploadedImage;
+            if (fuImage.HasFile)
+                uploadedImage = fuImage.FileBytes;
+            else
+                uploadedImage = null;
 
-            newsBusiness.AddNews(txtTitle.Text, DateTime.Parse(txtDate.Text), txtDesc.Text, null, categoryBusiness.GetByID(long.Parse(ddCategory.SelectedItem.Value)));
+            newsBusiness.AddNews(txtTitle.Text, DateTime.Parse(txtDate.Text), txtDesc.Text, uploadedImage, long.Parse(ddCategory.SelectedItem.Value));
+            Response.Redirect("News");
         }
     }
 }
