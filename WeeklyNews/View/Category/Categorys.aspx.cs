@@ -5,23 +5,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WeeklyNews.Business;
+using WeeklyNews.DAL;
 
 namespace WeeklyNews.View.Category
 {
     public partial class Categorys : System.Web.UI.Page
     {
-        private CategoryBusiness categoryBusiness;
-        public Categorys(CategoryBusiness categoryBusiness)
-        {
-            this.categoryBusiness = categoryBusiness;
-        }
+        private CategoryBusiness categoryBusiness = (CategoryBusiness)UnityConfig.unityContainer.Resolve(typeof(CategoryBusiness), typeof(CategoryBusiness).Name);
         protected void Page_Load(object sender, EventArgs e)
-        {                       
+        {            
             RefreshGridView();
         }
         private void RefreshGridView()
         {
-            gvCategory.DataSource = categoryBusiness.ListView().ToList();
+            gvCategory.DataSource = categoryBusiness.FetchAll().ToList();
             gvCategory.DataBind();
         }
         protected void gvCategory_RowCommand(object sender, GridViewCommandEventArgs e)

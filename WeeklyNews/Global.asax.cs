@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.WebFormsDependencyInjection.Unity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
@@ -21,13 +22,10 @@ namespace WeeklyNews
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
+            Database.SetInitializer<WeeklyNewsContext>(new DropCreateDatabaseIfModelChanges<WeeklyNewsContext>());
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            var unityContainer = this.AddUnity();
-            unityContainer.RegisterType(typeof(Repository<>),typeof(WeeklyNewsContext));            
-            unityContainer.RegisterType(typeof(UnitOfWork), typeof(Repository<>));
-            unityContainer.RegisterType(typeof(CategoryBusiness));
+            UnityConfig.RegisterComponent();
 
         }
 

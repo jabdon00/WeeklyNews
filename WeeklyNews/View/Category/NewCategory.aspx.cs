@@ -5,19 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WeeklyNews.Business;
+using WeeklyNews.DAL;
 
 namespace WeeklyNews.View.Category
 {
     public partial class NewCategory : System.Web.UI.Page
     {
-        private CategoryBusiness categoryBusiness;
+        private CategoryBusiness categoryBusiness = (CategoryBusiness)UnityConfig.unityContainer.Resolve(typeof(CategoryBusiness), typeof(CategoryBusiness).Name);
         private string editID = String.Empty;
-        public NewCategory(CategoryBusiness categoryBusiness)
-        {
-            this.categoryBusiness = categoryBusiness;
-        }
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {
             editID = Request.QueryString["id"];
             if (editID != null)
                 if (!IsPostBack)

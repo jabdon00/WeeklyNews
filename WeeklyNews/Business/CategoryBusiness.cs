@@ -17,7 +17,7 @@ namespace WeeklyNews.Business
             categoryRepository = unitOfWork.Repository<Category>();
         }
 
-        public IQueryable<Category> ListView ()
+        public IQueryable<Category> FetchAll ()
         {
             return categoryRepository.Table;
         }

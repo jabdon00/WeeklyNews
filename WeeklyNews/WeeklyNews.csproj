@@ -102,9 +102,11 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.Abstractions.3.3.0\lib\net47\Unity.Abstractions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Unity.Container, Version=5.8.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.Container.5.8.6\lib\net47\Unity.Container.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
@@ -214,6 +216,8 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="View\Category\Categorys.aspx" />
     <Content Include="View\Category\NewCategory.aspx" />
+    <Content Include="View\News\NewNews.aspx" />
+    <Content Include="View\News\News.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -230,6 +234,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Business\NewsBusiness.cs" />
     <Compile Include="Business\CategoryBusiness.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -240,6 +245,7 @@
     </Compile>
     <Compile Include="DAL\Repository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="DAL\UnityConfig.cs" />
     <Compile Include="DAL\WeeklyNewsContext.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -297,6 +303,20 @@
     </Compile>
     <Compile Include="View\Category\NewCategory.aspx.designer.cs">
       <DependentUpon>NewCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\News\NewNews.aspx.cs">
+      <DependentUpon>NewNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\News\NewNews.aspx.designer.cs">
+      <DependentUpon>NewNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\News\News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\News\News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

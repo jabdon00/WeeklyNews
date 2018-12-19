@@ -4,6 +4,6 @@
 
 
     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/View/Category/Categorys.aspx">Category</asp:HyperLink>
-
-
+    <br />
+    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/View/News/News.aspx">News</asp:HyperLink>
 </asp:Content>
