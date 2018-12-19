@@ -12,9 +12,12 @@ namespace WeeklyNews.View.Category
     {
         private CategoryBusiness categoryBusiness;
         private string editID = String.Empty;
-        protected void Page_Load(object sender, EventArgs e)
+        public NewCategory(CategoryBusiness categoryBusiness)
         {
-            categoryBusiness = new CategoryBusiness();
+            this.categoryBusiness = categoryBusiness;
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {            
             editID = Request.QueryString["id"];
             if (editID != null)
                 if (!IsPostBack)
@@ -23,7 +26,7 @@ namespace WeeklyNews.View.Category
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (editID != String.Empty)
+            if (!String.IsNullOrEmpty(editID))
                 categoryBusiness.UpdateCategory(long.Parse(editID), txtTitle.Text);
             else
                 categoryBusiness.AddCategory(txtTitle.Text);

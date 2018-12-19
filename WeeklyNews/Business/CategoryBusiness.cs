@@ -9,10 +9,11 @@ namespace WeeklyNews.Business
 {
     public class CategoryBusiness
     {
-        private UnitOfWork unitOfWork = new UnitOfWork(new WeeklyNewsContext());
+        private UnitOfWork unitOfWork;
         private Repository<Category> categoryRepository;
-        public CategoryBusiness()
+        public CategoryBusiness(UnitOfWork unitOfWork)
         {
+            this.unitOfWork = unitOfWork;
             categoryRepository = unitOfWork.Repository<Category>();
         }
 
