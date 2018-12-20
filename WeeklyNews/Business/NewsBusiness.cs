@@ -44,6 +44,14 @@ namespace WeeklyNews.Business
                     }
                 );
         }
+        public List<VwNews> FetchTopFive()
+        {            
+            var dbc = new WeeklyNewsContext();
+            return dbc.Database.SqlQuery<VwNews>(@"select a.Id,a.Date,b.Title CategoryTitle,a.Title ,a.Description,a.Image from
+                                           (select *, ROW_NUMBER() over(partition by CategoryID order by Date) rankno from News) a
+                                            join Categories b on a.CategoryID = b.Id
+                                            where rankno <= 5").ToList();            
+        }
         public News GetByID(long Id)
         {
             return newsRepositorty.GetById(Id);
@@ -60,18 +68,20 @@ namespace WeeklyNews.Business
             news.ModifiedDate = DateTime.Now;
             newsRepositorty.Insert(news);
         }
-        public void UpdateNews(long newsID, string title)
+        public void UpdateNews(long newsID, string title, DateTime date, string desc, byte[] image, long categoryID)
         {
-            var news = new News();
-            news = newsRepositorty.GetById(newsID);
+            var news = newsRepositorty.GetById(newsID);
             news.Title = title;
+            news.Date = date;
+            news.Description = desc;
+            news.CategoryID = categoryID;
+            news.Image = image;
             news.ModifiedDate = DateTime.Now;
             newsRepositorty.Update(news);
         }
         public void DeleteNews(long newsID)
         {
-            var news = new News();
-            news = newsRepositorty.GetById(newsID);
+            var news = newsRepositorty.GetById(newsID);
             newsRepositorty.Delete(news);
         }
         public byte[] imageToByteArray(System.Drawing.Image imageIn)

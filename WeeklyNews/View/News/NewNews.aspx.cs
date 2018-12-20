@@ -15,15 +15,25 @@ namespace WeeklyNews.View.News
         private CategoryBusiness categoryBusiness = (CategoryBusiness)UnityConfig.unityContainer.Resolve(typeof(CategoryBusiness), typeof(CategoryBusiness).Name);
         private NewsBusiness newsBusiness = (NewsBusiness)UnityConfig.unityContainer.Resolve(typeof(NewsBusiness), typeof(NewsBusiness).Name);
         private string editID = String.Empty;
-
+        private byte[] editImage = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            editID = Request.QueryString["id"];
             if (!IsPostBack)
             {
                 ddCategory.DataValueField = "Id";
                 ddCategory.DataTextField = "Title";
                 ddCategory.DataSource = categoryBusiness.FetchAll().ToList();
                 ddCategory.DataBind();
+                if (!String.IsNullOrEmpty(editID))
+                {
+                    var editNews = newsBusiness.GetByID(long.Parse(editID));
+                    txtTitle.Text = editNews.Title;
+                    txtDate.Text = editNews.Date.ToString();
+                    txtDesc.Text = editNews.Description;
+                    ddCategory.SelectedValue = editNews.CategoryID.ToString();
+                    editImage = editNews.Image;
+                }
             }
         }
 
@@ -33,9 +43,17 @@ namespace WeeklyNews.View.News
             if (fuImage.HasFile)
                 uploadedImage = fuImage.FileBytes;
             else
-                uploadedImage = null;
+            {
+                if (editImage == null)
+                    uploadedImage = null;
+                else
+                    uploadedImage = editImage;
+            }
 
-            newsBusiness.AddNews(txtTitle.Text, DateTime.Parse(txtDate.Text), txtDesc.Text, uploadedImage, long.Parse(ddCategory.SelectedItem.Value));
+            if (String.IsNullOrEmpty(editID))
+                newsBusiness.AddNews(txtTitle.Text, DateTime.Parse(txtDate.Text), txtDesc.Text, uploadedImage, long.Parse(ddCategory.SelectedItem.Value));
+            else
+                newsBusiness.UpdateNews(long.Parse(editID), txtTitle.Text, DateTime.Parse(txtDate.Text), txtDesc.Text, uploadedImage, long.Parse(ddCategory.SelectedItem.Value));
             Response.Redirect("News");
         }
     }

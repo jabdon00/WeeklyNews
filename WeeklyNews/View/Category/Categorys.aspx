@@ -10,6 +10,10 @@
     <form id="form1" runat="server">
         <div>
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/View/Category/NewCategory.aspx">Add Category</asp:HyperLink>
+           
+        </div>
+        <div>
+             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink>
         </div>
         <div>
             <asp:GridView ID="gvCategory" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnRowCommand="gvCategory_RowCommand" OnRowDeleting="gvCategory_RowDeleting">
